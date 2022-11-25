@@ -1,0 +1,12 @@
+#!/bin/bash
+#SBATCH -o job.%j.out
+#SBATCH --partition=smp
+#SBATCH -J 'TE'
+#SBATCH --ntasks-per-node=20
+#SBATCH --time=120:00:00
+
+i=$1
+
+RepeatMasker -pa 20 -s -a -inv -no_is -norna -xsmall -nolow -lib ${i/chr.fasta/t2t.lib} -cutoff 225 $i -dir ${i/fasta/out}
+
+

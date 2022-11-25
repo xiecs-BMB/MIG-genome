@@ -1,0 +1,13 @@
+#!/bin/bash
+#SBATCH -o job.%j.out
+#SBATCH --partition=normal
+#SBATCH -J '�'
+#SBATCH --ntasks-per-node=10
+#SBATCH --time=120:00:00
+
+### alignment are geneated as perivous describe
+i=$1
+
+iqtree -s $i -m TEST -B 10000 -T 10
+
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+#SBATCH -o job.%j.out
+#SBATCH --partition=normal
+#SBATCH -J 'm'
+#SBATCH --ntasks-per-node=20
+#SBATCH --time=120:00:00
+
+fa=$1
+singularity exec ../../EDTA.sif EDTA.pl --genome $fa --sensitive 0 --anno 1 --evaluate 1 --threads 20
+
+
+
